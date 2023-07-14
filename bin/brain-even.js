@@ -26,6 +26,10 @@ const isEven = (number) => ((number % 2 === 0) ? 'yes' : 'no');
 // Set a limit of attempts:
 const attempts = 3;
 
+// const gameAnswer = (trueAnswer, userInput) => {
+//   const
+// }
+
 const isEvenNumber = () => {
   let i = 0;
   let y = 0;
