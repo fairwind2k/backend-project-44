@@ -5,12 +5,13 @@ import { getRandomInt, play } from '../src/index.js';
 
 const gameAsk = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-const maxNumber = 200;
+const min = 1;
+const max = 200;
 
 // Define, is the random number even:
 const isEven = () => {
   const arr = [];
-  const resultNumber = getRandomInt(maxNumber);
+  const resultNumber = getRandomInt(min, max);
   arr.push(String(resultNumber));
   if (resultNumber % 2 === 0) {
     arr.push('yes');
