@@ -1,59 +1,23 @@
 #!/usr/bin/env node
 
-import readlineSync from 'readline-sync';
+// import readlineSync from 'readline-sync';
+import { getRandomInt, play } from '../src/index.js';
 
-//  Ask user name:
-const userName = readlineSync.question('May I have your name? ');
+const gameAsk = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-// Greetings for user:
-const greetings = (name) => {
-  const greetString = `Hello, ${name} !`;
-  return greetString;
-};
-
-// Set a limit for random number:
 const maxNumber = 200;
 
-// Get a random number:
-const getRandomInt = (max) => {
-  const num = Math.floor(Math.random() * max);
-  return num;
-};
-
 // Define, is the random number even:
-const isEven = (number) => ((number % 2 === 0) ? 'yes' : 'no');
-
-// Set a limit of attempts:
-const attempts = 3;
-
-// const gameAnswer = (trueAnswer, userInput) => {
-//   const
-// }
-
-const isEvenNumber = () => {
-  let i = 0;
-  let y = 0;
-  let finalWords = '';
-  while (i < attempts) {
-    const resultNumber = getRandomInt(maxNumber);
-    const isEvenAnswer = isEven(resultNumber);
-    console.log(`Question: ${resultNumber}`);
-    const answer = readlineSync.question('Your answer: ');
-    if (answer === isEvenAnswer) {
-      console.log('Correct!');
-      y += 1;
-    } else {
-      finalWords = `'${answer}' is wrong answer. Correct answer was '${isEvenAnswer}'. Let's try again, ${userName}`;
-      break;
-    }
-    i += 1;
+const isEven = () => {
+  const arr = [];
+  const resultNumber = getRandomInt(maxNumber);
+  arr.push(String(resultNumber));
+  if (resultNumber % 2 === 0) {
+    arr.push('yes');
+  } else {
+    arr.push('no');
   }
-  if (y === 3) {
-    finalWords = `Congratulations, ${userName}!`;
-  }
-  return finalWords;
+  return arr;
 };
 
-console.log(greetings(userName));
-console.log('Answer "yes" if the number is even, otherwise answer "no".');
-console.log(isEvenNumber());
+console.log(play(gameAsk, isEven));
