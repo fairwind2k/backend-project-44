@@ -11,7 +11,7 @@ const getSetConditionAndAnswer = () => {
   const randomIndex = Math.floor(Math.random() * size);
   const symbol = operators[randomIndex];
   const arr = pairs();
-  const str = `${arr[0]} ${symbol} ${arr[1]}`;
+  const expression = `${arr[0]} ${symbol} ${arr[1]}`;
   let res;
   switch (symbol) {
     case '+':
@@ -26,20 +26,8 @@ const getSetConditionAndAnswer = () => {
     default:
       res = null;
   }
-  const setQandA = [str, String(res)];
+  const setQandA = [expression, String(res)];
   return setQandA;
 };
 
-// get an array of conditions and answers:
-
-const getSet = () => {
-  const arr = [];
-  for (let i = 0; i < 3; i += 1) {
-    const elem = getSetConditionAndAnswer();
-    arr.push(elem);
-  }
-  return arr;
-};
-
-const set = getSet();
-console.log(play(gameAsk, set));
+console.log(play(gameAsk, getSetConditionAndAnswer));
