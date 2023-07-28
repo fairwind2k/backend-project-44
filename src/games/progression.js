@@ -3,7 +3,7 @@ import play from '../index.js';
 
 // set limits of the progression array:
 const minNumProgression = 5;
-const maxNumProgression = 11;
+const maxNumProgression = 10;
 
 // set a range for a difference:
 const minDiff = 1;
@@ -26,7 +26,7 @@ const getProgression = () => {
     num += difference;
     arr.push(num);
   }
-  const randomIndex = getRandomInt(0, arrLength);
+  const randomIndex = getRandomInt(0, arrLength - 1);
   const randomElem = arr[randomIndex];
   arr.splice(randomIndex, 1, '..');
   const str = arr.join(' ');
