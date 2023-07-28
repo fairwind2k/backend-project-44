@@ -14,11 +14,11 @@ const play = (gameQuestion, runCustomGameFunction) => {
     if (userAnswer === rightAnswer) {
       console.log('Correct!');
     } else {
-      return `'${userAnswer}' is wrong answer. Correct answer was '${rightAnswer}'.\nLet's try again, ${userName}!`;
+      console.log(`'${userAnswer}' is wrong answer. Correct answer was '${rightAnswer}'.\nLet's try again, ${userName}!`);
+      return;
     }
   }
-  const finalWords = `Congratulations, ${userName}!`;
-  return finalWords;
+  console.log(`Congratulations, ${userName}!`);
 };
 
 export default play;
