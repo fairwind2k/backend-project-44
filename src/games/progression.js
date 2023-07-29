@@ -16,23 +16,28 @@ const maxFirst = 100;
 const gameAsk = 'What number is missing in the progression?';
 
 const getProgression = () => {
-  const arr = [];
-  const difference = getRandomInt(minDiff, maxDiff);
+  const progression = [];
   const firstElem = getRandomInt(minFirst, maxFirst);
-  arr.push(firstElem);
-  const arrLength = getRandomInt(minNumProgression, maxNumProgression);
+  const size = getRandomInt(minNumProgression, maxNumProgression);
+  progression.push(firstElem);
+  const difference = getRandomInt(minDiff, maxDiff);
   let num = firstElem;
-  for (let i = 1; i < arrLength; i += 1) {
+  for (let i = 1; i < size; i += 1) {
     num += difference;
-    arr.push(num);
+    progression.push(num);
   }
-  const randomIndex = getRandomInt(0, arrLength - 1);
-  const randomElem = arr[randomIndex];
-  arr.splice(randomIndex, 1, '..');
-  const str = arr.join(' ');
-  return [str, String(randomElem)];
+  return progression;
 };
 
-const runBrainProgression = () => play(gameAsk, getProgression);
+const generateDataAnswer = () => {
+  const numbers = getProgression();
+  const randomIndex = getRandomInt(0, numbers.length - 1);
+  const randomElem = numbers[randomIndex];
+  numbers.splice(randomIndex, 1, '..');
+  const question = numbers.join(' ');
+  return [question, String(randomElem)];
+};
+
+const runBrainProgression = () => play(gameAsk, generateDataAnswer);
 
 export default runBrainProgression;
