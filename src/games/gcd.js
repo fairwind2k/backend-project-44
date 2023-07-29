@@ -6,10 +6,9 @@ const max = 100;
 
 const gameAsk = 'Find the greatest common divisor of given numbers.';
 
-const getCommonDivisor = () => {
-  const arr = [];
-  let [a, b] = pairs(min, max);
-  arr.push(`${String(a)} ${String(b)}`);
+const getCommonDivisor = (num1, num2) => {
+  let a = num1;
+  let b = num2;
   while (a !== 0 && b !== 0) {
     if (a > b) {
       a %= b;
@@ -17,11 +16,16 @@ const getCommonDivisor = () => {
       b %= a;
     }
   }
-  const divisor = a + b;
-  arr.push(String(divisor));
-  return arr;
+  return a + b;
 };
 
-const runBrainGcd = () => play(gameAsk, getCommonDivisor);
+const generateDataAnswer = () => {
+  const [number1, number2] = pairs(min, max);
+  const question = `${String(number1)} ${String(number2)}`;
+  const divisor = getCommonDivisor(number1, number2);
+  return [question, String(divisor)];
+};
+
+const runBrainGcd = () => play(gameAsk, generateDataAnswer);
 
 export default runBrainGcd;
