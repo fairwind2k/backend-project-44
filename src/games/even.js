@@ -6,19 +6,14 @@ const gameAsk = 'Answer "yes" if the number is even, otherwise answer "no".';
 const min = 1;
 const max = 200;
 
-// Define, is the random number even:
-const isEven = () => {
-  const arr = [];
+const isEven = (number) => ((number % 2 === 0) ? 'yes' : 'no');
+
+const generateDataAnswer = () => {
   const resultNumber = getRandomInt(min, max);
-  arr.push(String(resultNumber));
-  if (resultNumber % 2 === 0) {
-    arr.push('yes');
-  } else {
-    arr.push('no');
-  }
-  return arr;
+  const answer = isEven(resultNumber);
+  return [String(resultNumber), answer];
 };
 
-const runIsEven = () => play(gameAsk, isEven);
+const runIsEven = () => play(gameAsk, generateDataAnswer);
 
 export default runIsEven;
