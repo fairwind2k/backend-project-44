@@ -21,15 +21,12 @@ const isPrimeNumber = (num) => {
   return true;
 };
 
-const isPrime = () => {
+const generateDataAnswer = () => {
   const num = getRandomInt(min, max);
-  const arr = [];
-  const elem = isPrimeNumber(num) ? 'yes' : 'no';
-  arr.push(String(num));
-  arr.push(elem);
-  return arr;
+  const answer = isPrimeNumber(num) ? 'yes' : 'no';
+  return [num, answer];
 };
 
-const runBrainPrime = () => play(gameAsk, isPrime);
+const runBrainPrime = () => play(gameAsk, generateDataAnswer);
 
 export default runBrainPrime;
