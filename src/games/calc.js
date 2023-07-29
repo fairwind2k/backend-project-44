@@ -1,4 +1,5 @@
 import pairs from '../helpers/pairs.js';
+import getRandomInt from '../helpers/random_number.js';
 import play from '../index.js';
 
 const gameAsk = 'What is the result of the expression?';
@@ -26,7 +27,7 @@ const getExpression = (rundomSymbol, numbers) => {
 const getSetConditionAndAnswer = () => {
   const operators = ['+', '-', '*'];
   const size = operators.length;
-  const randomIndex = Math.floor(Math.random() * size);
+  const randomIndex = getRandomInt(min, size - 1);
   const symbol = operators[randomIndex];
   const rundomNumbers = pairs(min, max);
   const expression = `${rundomNumbers[0]} ${symbol} ${rundomNumbers[1]}`;
