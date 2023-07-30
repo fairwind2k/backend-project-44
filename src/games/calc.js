@@ -6,17 +6,17 @@ const gameAsk = 'What is the result of the expression?';
 const min = 0;
 const max = 20;
 
-const getExpression = (rundomSymbol, numbers) => {
+const getExpression = (operator, number1, number2) => {
   let res = 0;
-  switch (rundomSymbol) {
+  switch (operator) {
     case '+':
-      res = numbers[0] + numbers[1];
+      res = number1 + number2;
       break;
     case '-':
-      res = numbers[0] - numbers[1];
+      res = number1 - number2;
       break;
     case '*':
-      res = numbers[0] * numbers[1];
+      res = number1 * number2;
       break;
     default:
       res = null;
@@ -29,9 +29,9 @@ const getSetConditionAndAnswer = () => {
   const size = operators.length;
   const randomIndex = getRandomInt(min, size - 1);
   const symbol = operators[randomIndex];
-  const rundomNumbers = pairs(min, max);
-  const expression = `${rundomNumbers[0]} ${symbol} ${rundomNumbers[1]}`;
-  const res = getExpression(symbol, rundomNumbers);
+  const [num1, num2] = pairs(min, max);
+  const expression = `${num1} ${symbol} ${num2}`;
+  const res = getExpression(symbol, num1, num2);
   const setQandA = [expression, String(res)];
   return setQandA;
 };
