@@ -15,22 +15,21 @@ const maxFirst = 100;
 
 const gameAsk = 'What number is missing in the progression?';
 
-const getProgression = () => {
-  const progression = [];
-  const firstElem = getRandomInt(minFirst, maxFirst);
-  const size = getRandomInt(minNumProgression, maxNumProgression);
-  progression.push(firstElem);
-  const difference = getRandomInt(minDiff, maxDiff);
+const getProgression = (firstElem, progressionStep, progressionLength) => {
+  const progression = [firstElem];
   let num = firstElem;
-  for (let i = 1; i < size; i += 1) {
-    num += difference;
+  for (let i = 1; i < progressionLength; i += 1) {
+    num += progressionStep;
     progression.push(num);
   }
   return progression;
 };
 
 const generateDataAnswer = () => {
-  const numbers = getProgression();
+  const firstElem = getRandomInt(minFirst, maxFirst);
+  const size = getRandomInt(minNumProgression, maxNumProgression);
+  const step = getRandomInt(minDiff, maxDiff);
+  const numbers = getProgression(firstElem, step, size);
   const randomIndex = getRandomInt(0, numbers.length - 1);
   const randomElem = numbers[randomIndex];
   numbers.splice(randomIndex, 1, '..');
